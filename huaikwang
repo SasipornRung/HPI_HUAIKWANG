@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huai Khwang Real Estate Audit</title>
+    <title>Huai Khwang Real Estate Audit Report</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Bloomberg Terminal Style Theme */
         body {
             background-color: #121212;
             color: #e0e0e0;
@@ -16,39 +18,73 @@
             line-height: 1.6;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
         }
-        h1, h2, h3 {
+        
+        /* Typography */
+        h1 {
+            color: #f1c40f; /* Bloomberg Yellow */
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+        h2 {
             color: #f1c40f;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
+            border-left: 4px solid #2ecc71; /* Neon Green */
+            padding-left: 10px;
             margin-top: 40px;
         }
-        h1 { font-size: 2.5em; text-align: center; border: none; }
-        .intro, .analysis {
+        h3 {
+            color: #ccc;
+            margin-top: 20px;
+        }
+        p {
+            color: #b0b0b0;
+            font-size: 1.05em;
+        }
+        
+        /* Narrative Box */
+        .narrative-box {
             background-color: #1e1e1e;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
         .highlight { color: #2ecc71; font-weight: bold; }
-        .warning { color: #e74c3c; font-weight: bold; }
-        .chart-container {
-            position: relative;
-            height: 500px;
-            width: 100%;
-            margin: 20px 0;
-            border: 1px solid #333;
+        .danger { color: #e74c3c; font-weight: bold; }
+        .focus { color: #9b59b6; font-weight: bold; }
+
+        /* Chart Containers */
+        .chart-wrapper {
+            background-color: #1e1e1e;
+            border: 1px solid #444;
             border-radius: 5px;
-            background: #1e1e1e;
+            padding: 10px;
+            margin-bottom: 10px;
+            height: 550px;
         }
+        .insight {
+            background-color: #2c3e50;
+            padding: 10px 15px;
+            border-left: 4px solid #3498db;
+            font-size: 0.9em;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        /* Footer */
         .footer {
             text-align: center;
-            margin-top: 50px;
-            color: #666;
-            font-size: 0.9em;
+            margin-top: 60px;
+            color: #555;
+            font-size: 0.8em;
+            border-top: 1px solid #333;
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -56,111 +92,133 @@
 
 <div class="container">
     <h1>THE HUAI KHWANG AUDIT REPORT</h1>
-    <p style="text-align: center; color: #888;">Interactive Data Visualization by Central Bank Auditor</p>
+    <p style="text-align: center; color: #888;">Interactive Dashboard by Macro-Financial Stability Dept.</p>
 
-    <div class="intro">
-        <h2>🏙️ The Tale of Two Huai Khwangs: Life Cycle of a District</h2>
+    <div class="narrative-box">
+        <h2 style="margin-top:0;">🏙️ The Tale of Two Huai Khwangs: Life Cycle of a District</h2>
         
         <h3>บทที่ 1: The Golden Age (ยุคตื่นทอง 2009-2015)</h3>
-        <p>ช่วงเวลาที่ห้วยขวางเปลี่ยนจาก "ย่านที่พักอาศัย" เป็น "New CBD Extension" ด้วยอานิสงส์ของ MRT และทุนจีน ราคาคอนโดทุกกลุ่ม (Type 1-3) วิ่งขึ้นพร้อมกัน <span class="highlight">ชนะทั้ง GDP และเงินเฟ้อ</span></p>
+        <p>ช่วงเวลาที่ห้วยขวางเปลี่ยนสถานะจาก "ย่านที่พักอาศัย" เป็น <b>"New CBD Extension"</b> ด้วยอานิสงส์ของรถไฟฟ้า MRT และทุนจีนระลอกแรก ราคาคอนโดทุกกลุ่ม (Type 1-3) วิ่งขึ้นพร้อมกัน <span class="highlight">ชนะทั้ง GDP และเงินเฟ้อ</span></p>
 
         <h3>บทที่ 2: The Reality Check (ยุคความจริง 2016-2019)</h3>
-        <p>เกิดภาวะ <span class="warning">Oversupply</span> ราคาเริ่มนิ่งและแพ้ค่าเฉลี่ยตลาด (Underperform) เป็นช่วงที่นักเก็งกำไรเริ่มติดดอย</p>
+        <p>เกิดภาวะ <span class="danger">Oversupply</span> จากการโหมเปิดตัวโครงการ ราคาเริ่มนิ่งและแพ้ค่าเฉลี่ยตลาด (Underperform) เป็นช่วงที่นักเก็งกำไรเริ่มติดดอย และตลาดเริ่มคัดกรอง "ของจริง"</p>
 
         <h3>บทที่ 3: The Great Divergence (ยุคทางใครทางมัน 2020-ปัจจุบัน)</h3>
-        <p>วิกฤตโควิดสร้างแผลเป็นรูปตัว K (K-Shaped Recovery) ตลาดล่าง (Mass) ซบเซาหนัก แต่ตลาดบน (Luxury) กลับมี <span class="highlight">Anomaly Spike ในปี 2021</span> ที่ราคาพุ่งทะยานสวนกระแส</p>
+        <p>วิกฤตโควิดสร้างแผลเป็นรูปตัว K (K-Shaped Recovery) ตลาดล่าง (Mass) ซบเซาหนักตามหนี้ครัวเรือน แต่ตลาดบน (Luxury) กลับมี <span class="focus">Anomaly Spike ในปี 2021</span> ที่ราคาพุ่งทะยานสวนกระแสจากความต้องการสินทรัพย์ปลอดภัย</p>
     </div>
 
     <h2>1. The Asset Race: Where does Huai Khwang Stand?</h2>
     <p>เปรียบเทียบผลตอบแทน (Base 2009=100) ระหว่างห้วยขวาง (HPI) กับสินทรัพย์ระดับโลกและตลาดรวม</p>
-    <div id="chart1" class="chart-container"></div>
-    <div class="analysis">
-        <p><strong>Insight:</strong> สังเกตเส้น <span style="color:#2ecc71"><b>สีเขียว (Huai Khwang)</b></span> ที่เคยพุ่งนำตลาดในปี 2013-2015 แต่กลับแผ่วปลายในปีล่าสุด แพ้ S&P 500 (สีม่วง) และค่าเฉลี่ยตลาด (สีฟ้า) ขาดลอย แต่ยังชนะ GDP และเงินเฟ้อได้เฉียดฉิว</p>
+    
+    <div id="chart1" class="chart-wrapper"></div>
+    
+    <div class="insight">
+        <b>💡 Auditor's Insight:</b> สังเกตเส้น <span style="color:#2ecc71; font-weight:bold;">สีเขียว (Huai Khwang)</span> ช่วงปี 2013-2015 มันเคยพุ่งชนะทุกตลาด แต่ปัจจุบันกลับแผ่วลงมาอยู่ที่ 143 จุด ในขณะที่ S&P 500 (สีม่วง) พุ่งไปไกลถึง 344 จุด
     </div>
 
     <h2>2. Supply Evolution: The Shift in Archetypes</h2>
-    <p>วิวัฒนาการของ Supply ในตลาด: จาก Mass Market สู่ Luxury</p>
-    <div id="chart2" class="chart-container"></div>
+    <p>เราเห็นการเปลี่ยนแปลงของ Supply ในตลาดอย่างไร? (Mass Market vs. Luxury)</p>
+    
+    <div id="chart2" class="chart-wrapper"></div>
+    <div class="insight">
+        <b>💡 Auditor's Insight:</b> กราฟแท่งแสดงให้เห็นว่าในปีหลังๆ (2021-2022) สัดส่วนของ <b>Type 1 (สีฟ้า-Mass)</b> ลดน้อยลงมาก ในขณะที่ตลาดหันไปผลิตของแพง (สีเขียว-Luxury) มากขึ้น
+    </div>
 
     <h2>3. The Timeline of Value (Bubble Chart)</h2>
-    <p>ทุกวงกลมคือ 1 โครงการ (ขนาดวง = ความหนาแน่นยูนิต)</p>
-    <div id="chart3" class="chart-container"></div>
-    <div class="analysis">
-        <p><strong>Insight:</strong> ลอง Zoom ดูปี 2021 คุณจะเห็น "The Stage" ลอยโด่งอยู่ด้านบนสุด นั่นคือสาเหตุของกราฟที่พุ่งผิดปกติ (The Anomaly)</p>
+    <p>เจาะลึกรายโครงการ: ขนาดวง = ความหนาแน่น (ยูนิต), สี = กลุ่ม Archetype</p>
+    
+    <div id="chart3" class="chart-wrapper"></div>
+    <div class="insight">
+        <b>💡 Auditor's Insight:</b> ลองเอาเมาส์ไปชี้ที่ <b>ปี 2021</b> คุณจะเห็นวงกลมสีเขียวลอยโด่งอยู่ด้านบนสุด นั่นคือโครงการ <b>"The Stage Mindscape"</b> ซึ่งเป็นสาเหตุที่ทำให้กราฟ HPI ปีนั้นพุ่งผิดปกติ (Supply Shortage Effect)
     </div>
 
     <div class="footer">
-        Generated by Macro-Financial Stability Department Audit Bot<br>
-        Source: User Database & Bank of Thailand (Public Data)
+        Generated by AI Financial Auditor Model<br>
+        Source: User Database, Bank of Thailand, SET Smart, Yahoo Finance
     </div>
 </div>
 
 <script>
-    // --- CHART 1 DATA: The Asset Race ---
-    var trace_sp500 = { x: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022], y: [81.0, 100.0, 112.8, 112.8, 127.9, 165.8, 184.6, 183.3, 200.8, 239.8, 224.8, 289.7, 336.8, 427.4, 344.3], name: 'S&P 500', line: {color: '#9b59b6', width: 2}, mode: 'lines+markers' };
-    var trace_gold = { x: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022], y: [85.3, 100.0, 117.6, 141.2, 144.1, 114.7, 108.8, 108.8, 117.6, 120.6, 114.7, 126.5, 155.9, 167.6, 175.3], name: 'Gold (THB)', line: {color: '#f1c40f', width: 2}, mode: 'lines+markers' };
-    var trace_hk = { x: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022], y: [107.9, 100.0, 99.0, 105.3, 118.9, 137.7, 134.7, 153.6, 135.1, 153.1, 129.6, 139.8, 134.2, 238.8, 143.4], name: 'Huai Khwang HPI', line: {color: '#2ecc71', width: 4}, mode: 'lines+markers' };
-    var trace_bot = { x: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022], y: [100.0, 100.0, 105.0, 112.0, 125.0, 135.0, 138.0, 145.0, 148.0, 155.0, 165.0, 175.0, 178.0, 194.4, 198.0], name: 'BKK Market (BOT)', line: {color: '#3498db', width: 2, dash: 'dash'} };
-    var trace_gdp = { x: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022], y: [100.7, 100.0, 107.5, 108.4, 116.2, 119.3, 120.5, 124.2, 128.5, 133.8, 139.5, 142.4, 133.7, 135.7, 139.2], name: 'Real GDP', line: {color: '#7f8c8d', width: 1, dash: 'dot'} };
+    // ==========================================
+    // 1. DATASETS (EMBEDDED DIRECTLY)
+    // ==========================================
     
-    var layout1 = { 
-        title: 'The Asset Race (Base 2009=100)', 
-        paper_bgcolor: '#1e1e1e', plot_bgcolor: '#1e1e1e', 
-        font: {color: '#ccc', family: 'Sarabun'}, 
-        xaxis: {gridcolor: '#333'}, yaxis: {gridcolor: '#333'},
-        margin: {l: 50, r: 50, b: 50, t: 50},
-        legend: {orientation: "h", y: 1.1}
+    // Years timeline
+    const years = [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022];
+
+    // Chart 1 Data (Indices Base 2009=100)
+    const data_sp500 = [81.0, 100.0, 112.8, 112.8, 127.9, 165.8, 184.6, 183.3, 200.8, 239.8, 224.8, 289.7, 336.8, 427.4, 344.3];
+    const data_gold  = [85.3, 100.0, 117.6, 141.2, 144.1, 114.7, 108.8, 108.8, 117.6, 120.6, 114.7, 126.5, 155.9, 167.6, 175.3];
+    const data_set   = [61.3, 100.0, 140.6, 139.6, 189.5, 176.8, 203.9, 175.3, 210.0, 238.7, 212.9, 215.1, 197.3, 225.7, 227.2];
+    const data_bot   = [100.0, 100.0, 105.0, 112.0, 125.0, 135.0, 138.0, 145.0, 148.0, 155.0, 165.0, 175.0, 178.0, 194.4, 198.0];
+    const data_hk    = [107.9, 100.0, 99.0, 105.3, 118.9, 137.7, 134.7, 153.6, 135.1, 153.1, 129.6, 139.8, 134.2, 238.8, 143.4];
+    const data_gdp   = [100.7, 100.0, 107.5, 108.4, 116.2, 119.3, 120.5, 124.2, 128.5, 133.8, 139.5, 142.4, 133.7, 135.7, 139.2];
+
+    // Chart 2 Data (Supply Mix %)
+    const mix_years = [2004, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022];
+    const mix_t1 = [100, 0, 50, 50, 50, 0, 57, 40, 25, 75, 25, 29, 20, 71, 50, 100, 33]; // Mass (Blue)
+    const mix_t2 = [0, 0, 0, 0, 0, 50, 29, 20, 0, 25, 50, 29, 40, 14, 0, 0, 33]; // Mid (Orange)
+    const mix_t3 = [0, 100, 50, 50, 50, 50, 14, 40, 75, 0, 25, 42, 40, 15, 50, 0, 34]; // Luxury (Green)
+
+    // Chart 3 Data (Bubble Timeline - Real Data from your files)
+    const bubble_x = [2019, 2021, 2022, 2020, 2022, 2012, 2008, 2007, 2020, 2009, 2012, 2014, 2012, 2012, 2013, 2017, 2013, 2012, 2019, 2013, 2015, 2017, 2011, 2016, 2019, 2011, 2017, 2018, 2009, 2010, 2018, 2016, 2016, 2013, 2015, 2017, 2012, 2019, 2015, 2017, 2016, 2017, 2019, 2015, 2019, 2022, 2014, 2012, 2018, 2014, 2013, 2014, 2019, 2017, 2008, 2010, 2004, 2018, 2018];
+    const bubble_y = [129629, 151923, 128095, 56645, 75600, 111003, 88697, 106666, 91600, 42857, 84814, 114705, 68085, 106060, 78214, 100000, 93548, 100778, 80317, 139199, 163636, 79915, 66785, 126708, 104090, 60702, 270588, 142500, 82857, 49687, 71326, 65476, 76666, 165151, 73142, 79600, 49378, 125000, 224583, 198561, 103225, 90000, 120733, 144144, 94676, 90000, 67857, 78214, 78214, 76000, 52857, 66923, 59600, 64782, 52666, 61870, 58333, 80425, 70642];
+    const bubble_size = [1980, 477, 383, 189, 77, 705, 436, 483, 270, 126, 190, 281, 1002, 289, 199, 1337, 1254, 674, 217, 433, 755, 1844, 109, 159, 202, 958, 1911, 1404, 539, 597, 218, 1092, 1418, 645, 776, 653, 663, 591, 508, 319, 671, 157, 496, 347, 122, 121, 133, 217, 544, 79, 188, 192, 121, 112, 416, 101, 1324, 79, 77];
+    const bubble_text = ["Siamese Rama 9", "The Stage Mindscape", "Quintara MHy'GEN", "Groove Scape 48", "Asher Koop", "Ideo Mobi Rama 9", "Diamond Ratchada", "Life @ Ratchada-Huai Khwang", "D Xel Ratchada 18", "Zenith Place", "The Colory Vivid", "The Capital Ekamai-Thonglor", "Supalai Wellington", "Ivy Ampio", "The Privacy Ratchada-Sutthisan B", "Artisan Ratchada", "Life Ratchadapisek", "Centric Ratchada-Huai Khwang", "Supalai Prime Rama 9", "Condolette Midst Rama 9", "Noble Revolve Ratchada 2", "Chapter One Eco", "The Tempo Ratchada", "Amaranta Residence", "Brown Ratchada-Huai Khwang", "TC Green Phase 1", "One9Five Asoke-Rama 9", "XT Huai Khwang", "Rhythm Ratchada-Huai Khwang", "U Delight @ Huai Khwang", "Maxi Prime Ratchada-Sutthisan", "Supalai Wellington 2", "Supalai Veranda Rama 9", "Supalai Premier Asoke", "TC Green Phase 2", "Rise Rama 9", "Aspire Rama 9", "Cloud Thonglor-Phetchaburi", "Ideo Mobi Asoke", "The Esse at Singha Complex", "The Niche Pride Thonglor-Phetchaburi", "JRY Rama 9", "The Base Phetchaburi-Thonglor", "Rhythm Asoke 2", "Lloyd Soonvijai-Thonglor", "Asher Ratchada", "Humble Living Ratchada-Sutthisan A", "The Privacy Ratchada-Sutthisan C", "Hi Sutthisan Condo", "The Revo Ladprao 48", "C Style Condo", "G Style Condo 1", "Asher Ratchada", "D Mark Condo @ Sutthisan", "Ivy Ratchada", "The Raffles", "Lumpini Ville Cultural Center", "Groove Ratchada-Ladprao", "Living Nest Ladprao 44"];
+    // Colors for bubbles (Archetype mapped)
+    const bubble_colors = ['#3498db', '#3498db', '#3498db', '#2ecc71', '#2ecc71', '#3498db', '#e74c3c', '#2ecc71', '#3498db', '#2ecc71', '#f39c12', '#e74c3c', '#f39c12', '#e74c3c', '#2ecc71', '#f39c12', '#f39c12', '#e74c3c', '#e74c3c', '#e74c3c', '#e74c3c', '#3498db', '#2ecc71', '#2ecc71', '#3498db', '#f39c12', '#f39c12', '#f39c12', '#e74c3c', '#e74c3c', '#2ecc71', '#f39c12', '#f39c12', '#e74c3c', '#f39c12', '#3498db', '#e74c3c', '#e74c3c', '#e74c3c', '#9b59b6', '#e74c3c', '#2ecc71', '#e74c3c', '#e74c3c', '#f39c12', '#f39c12', '#2ecc71', '#2ecc71', '#3498db', '#2ecc71', '#2ecc71', '#2ecc71', '#2ecc71', '#2ecc71', '#2ecc71', '#2ecc71', '#3498db', '#f39c12', '#2ecc71'];
+
+    // ==========================================
+    // 2. PLOTLY CONFIG
+    // ==========================================
+    
+    const layout_common = {
+        paper_bgcolor: '#1e1e1e',
+        plot_bgcolor: '#1e1e1e',
+        font: { family: 'Sarabun', color: '#ccc' },
+        xaxis: { gridcolor: '#333', zerolinecolor: '#333' },
+        yaxis: { gridcolor: '#333', zerolinecolor: '#333' },
+        margin: { l: 50, r: 20, t: 50, b: 50 },
+        legend: { orientation: 'h', y: 1.1, x: 0.5, xanchor: 'center' }
     };
-    Plotly.newPlot('chart1', [trace_sp500, trace_gold, trace_hk, trace_bot, trace_gdp], layout1);
 
-    // --- CHART 2 DATA: Archetype Mix ---
-    var mix_data = {"HR_Type1": [0.0, 0.0, 50.0, 50.0, 50.0, 0.0, 42.9, 40.0, 25.0, 75.0, 25.0, 0.0, 0.0, 42.9, 0.0, 0.0, 0.0], "HR_Type2": [0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 14.3, 20.0, 0.0, 25.0, 50.0, 28.6, 20.0, 0.0, 0.0, 0.0, 0.0], "HR_Type3": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 14.3, 0.0, 0.0, 0.0, 0.0, 0.0], "LR_Type1": [100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 14.3, 0.0, 0.0, 0.0, 0.0, 28.6, 20.0, 28.6, 50.0, 100.0, 33.3], "LR_Type2": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 14.3, 0.0, 0.0, 0.0, 0.0, 0.0, 20.0, 14.3, 0.0, 0.0, 33.3], "LR_Type3": [0.0, 100.0, 50.0, 50.0, 50.0, 50.0, 14.3, 40.0, 75.0, 0.0, 25.0, 28.6, 40.0, 14.3, 50.0, 0.0, 33.3]};
-    var years_mix = [2004, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022];
-    var colors = ['#3498db', '#f39c12', '#2ecc71', '#e74c3c', '#9b59b6', '#1abc9c'];
-    
-    var data2 = [];
-    var i = 0;
-    for (var key in mix_data) {
-        data2.push({ x: years_mix, y: mix_data[key], name: key, type: 'bar', marker: {color: colors[i % 6]} });
-        i++;
-    }
-    
-    var layout2 = { 
-        title: 'Archetype Market Share (%)', barmode: 'stack', 
-        paper_bgcolor: '#1e1e1e', plot_bgcolor: '#1e1e1e', 
-        font: {color: '#ccc', family: 'Sarabun'}, 
-        xaxis: {gridcolor: '#333'}, yaxis: {gridcolor: '#333'},
-        legend: {orientation: "h", y: 1.1}
-    };
-    Plotly.newPlot('chart2', data2, layout2);
+    // --- RENDER CHART 1 ---
+    Plotly.newPlot('chart1', [
+        { x: years, y: data_sp500, name: 'S&P 500', line: {color: '#9b59b6', width: 2}, mode: 'lines+markers' },
+        { x: years, y: data_gold,  name: 'Gold (THB)', line: {color: '#f1c40f', width: 2}, mode: 'lines+markers' },
+        { x: years, y: data_hk,    name: 'Huai Khwang HPI', line: {color: '#2ecc71', width: 4}, mode: 'lines+markers' },
+        { x: years, y: data_bot,   name: 'BKK Market (BOT)', line: {color: '#3498db', width: 2, dash: 'dash'} },
+        { x: years, y: data_gdp,   name: 'Real GDP', line: {color: '#7f8c8d', width: 1, dash: 'dot'} }
+    ], { ...layout_common, title: 'Asset Performance (Base 2009=100)' });
 
-    // --- CHART 3 DATA: Bubble Timeline ---
-    var arch_labels = ["LR_Type1", "LR_Type1", "LR_Type1", "LR_Type3", "LR_Type3", "LR_Type1", "HR_Type1", "LR_Type3", "LR_Type1", "LR_Type3", "LR_Type2", "HR_Type1", "HR_Type2", "HR_Type1", "LR_Type3", "HR_Type2", "HR_Type2", "HR_Type1", "HR_Type1", "HR_Type1", "HR_Type1", "LR_Type1", "LR_Type3", "LR_Type3", "LR_Type1", "HR_Type2", "HR_Type2", "HR_Type2", "HR_Type1", "HR_Type1", "LR_Type3", "HR_Type2", "HR_Type2", "HR_Type1", "HR_Type2", "LR_Type1", "HR_Type1", "HR_Type1", "HR_Type1", "HR_Type3", "HR_Type1", "LR_Type3", "HR_Type1", "HR_Type1", "LR_Type2", "LR_Type2", "LR_Type3", "LR_Type3", "LR_Type1", "LR_Type3", "LR_Type3", "LR_Type3", "LR_Type3", "LR_Type3", "LR_Type3", "LR_Type3", "LR_Type1", "LR_Type2", "LR_Type3"];
-    var unique_arch = [...new Set(arch_labels)].sort();
-    var color_map = {};
-    unique_arch.forEach((a, idx) => { color_map[a] = colors[idx % 6]; });
-    var point_colors = arch_labels.map(a => color_map[a]);
+    // --- RENDER CHART 2 ---
+    Plotly.newPlot('chart2', [
+        { x: mix_years, y: mix_t1, name: 'Type 1 (Mass)', type: 'bar', marker: {color: '#3498db'} },
+        { x: mix_years, y: mix_t2, name: 'Type 2 (Real Demand)', type: 'bar', marker: {color: '#f39c12'} },
+        { x: mix_years, y: mix_t3, name: 'Type 3 (Luxury)', type: 'bar', marker: {color: '#2ecc71'} }
+    ], { ...layout_common, title: 'Supply Archetype Mix (%)', barmode: 'stack' });
 
-    var trace_bubble = {
-        x: [2019, 2021, 2022, 2020, 2022, 2012, 2008, 2007, 2020, 2009, 2012, 2014, 2012, 2012, 2013, 2017, 2013, 2012, 2019, 2013, 2015, 2017, 2011, 2016, 2019, 2011, 2017, 2018, 2009, 2010, 2018, 2016, 2016, 2013, 2015, 2017, 2012, 2019, 2015, 2017, 2016, 2017, 2019, 2015, 2019, 2022, 2014, 2012, 2018, 2014, 2013, 2014, 2019, 2017, 2008, 2010, 2004, 2018, 2018], 
-        y: [129629.6, 151923.1, 128095.2, 56645.6, 75600.0, 111003.9, 88697.7, 106666.7, 91600.0, 42857.1, 84814.8, 114705.9, 68085.1, 106060.6, 78214.3, 100000.0, 93548.4, 100778.2, 80317.5, 139199.3, 163636.4, 79915.4, 66785.7, 126708.9, 104090.9, 60702.0, 270588.2, 142500.0, 82857.1, 49687.5, 71326.2, 65476.2, 76666.7, 165151.5, 73142.9, 79600.0, 49378.9, 125000.0, 224583.3, 198561.2, 103225.8, 90000.0, 120733.9, 144144.1, 94676.8, 90000.0, 67857.1, 78214.3, 78214.3, 76000.0, 52857.1, 66923.1, 59600.0, 64782.6, 52666.7, 61870.5, 58333.3, 80425.5, 70642.5], 
+    // --- RENDER CHART 3 ---
+    Plotly.newPlot('chart3', [{
+        x: bubble_x, 
+        y: bubble_y, 
+        text: bubble_text,
         mode: 'markers',
-        marker: { 
-            size: [1980, 477, 383, 189, 77, 705, 436, 483, 270, 126, 190, 281, 1002, 289, 199, 1337, 1254, 674, 217, 433, 755, 1844, 109, 159, 202, 958, 1911, 1404, 539, 597, 218, 1092, 1418, 645, 776, 653, 663, 591, 508, 319, 671, 157, 496, 347, 122, 121, 133, 217, 544, 79, 188, 192, 121, 112, 416, 101, 1324, 79, 77], 
-            sizemode: 'area', sizeref: 2, color: point_colors 
+        marker: {
+            size: bubble_size,
+            sizemode: 'area',
+            sizeref: 2, // Scale factor
+            color: bubble_colors,
+            line: {color: '#fff', width: 0.5}
         },
-        text: ["Siamese Rama 9", "The Stage Mindscape", "Quintara MHy'GEN", "Groove Scape 48", "Asher Koop", "Ideo Mobi Rama 9", "Diamond Ratchada", "Life @ Ratchada-Huai Khwang", "D Xel Ratchada 18", "Zenith Place", "The Colory Vivid", "The Capital Ekamai-Thonglor", "Supalai Wellington", "Ivy Ampio", "The Privacy Ratchada-Sutthisan B", "Artisan Ratchada", "Life Ratchadapisek", "Centric Ratchada-Huai Khwang", "Supalai Prime Rama 9", "Condolette Midst Rama 9", "Noble Revolve Ratchada 2", "Chapter One Eco", "The Tempo Ratchada", "Amaranta Residence", "Brown Ratchada-Huai Khwang", "TC Green Phase 1", "One9Five Asoke-Rama 9", "XT Huai Khwang", "Rhythm Ratchada-Huai Khwang", "U Delight @ Huai Khwang", "Maxi Prime Ratchada-Sutthisan", "Supalai Wellington 2", "Supalai Veranda Rama 9", "Supalai Premier Asoke", "TC Green Phase 2", "Rise Rama 9", "Aspire Rama 9", "Cloud Thonglor-Phetchaburi", "Ideo Mobi Asoke", "The Esse at Singha Complex", "The Niche Pride Thonglor-Phetchaburi", "JRY Rama 9", "The Base Phetchaburi-Thonglor", "Rhythm Asoke 2", "Lloyd Soonvijai-Thonglor", "Asher Ratchada", "Humble Living Ratchada-Sutthisan A", "The Privacy Ratchada-Sutthisan C", "Hi Sutthisan Condo", "The Revo Ladprao 48", "C Style Condo", "G Style Condo 1", "Asher Ratchada", "D Mark Condo @ Sutthisan", "Ivy Ratchada", "The Raffles", "Lumpini Ville Cultural Center", "Groove Ratchada-Ladprao", "Living Nest Ladprao 44"],
-        hovertemplate: '<b>%{text}</b><br>Year: %{x}<br>Price: %{y:,.0f}<br>Units: %{marker.size}<extra></extra>'
-    };
-    
-    var layout3 = { 
-        title: 'Project Timeline: Price vs. Density', 
-        paper_bgcolor: '#1e1e1e', plot_bgcolor: '#1e1e1e', 
-        font: {color: '#ccc', family: 'Sarabun'}, 
-        xaxis: {gridcolor: '#333', title: 'Launch Year'}, 
-        yaxis: {gridcolor: '#333', title: 'Price (Baht/SQM)'} 
-    };
-    Plotly.newPlot('chart3', [trace_bubble], layout3);
+        hovertemplate: '<b>%{text}</b><br>Year: %{x}<br>Price: %{y:,.0f} ฿<br>Units: %{marker.size}<extra></extra>'
+    }], { 
+        ...layout_common, 
+        title: 'Project Timeline: Price vs. Density',
+        xaxis: { ...layout_common.xaxis, title: 'Launch Year' },
+        yaxis: { ...layout_common.yaxis, title: 'Price (Baht/SQM)' }
+    });
+
 </script>
 
 </body>
